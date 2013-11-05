@@ -1,0 +1,6 @@
+---
+app_user: jenkins
+app_dir: /opt/jenkins
+app_data: /opt/jenkins/data
+app_logs: /opt/jenkins/logs
+http_port: 8080

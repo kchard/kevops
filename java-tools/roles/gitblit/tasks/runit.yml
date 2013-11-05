@@ -1,0 +1,16 @@
+ - name: create gitblit run script
+   remote_user: root
+   template: src=run.j2 dest=/etc/runit/{{ app_user }}/run mode=0755
+
+ - name: create gitblit log run script
+   remote_user: root
+   template: src=log_run.j2 dest=/etc/runit/{{ app_user }}/log/run mode=0755
+
+ - name: create log directory
+   remote_user: root
+   file: path={{ app_logs }} state=directory group={{ app_user }} owner={{ app_user }}
+
+ - name: initialize gitblit runit service
+   remote_user: root
+   command: ln -sf /etc/runit/{{ app_user }} /etc/service/{{ app_user }}
+

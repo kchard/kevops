@@ -1,0 +1,4 @@
+#!/bin/sh -e
+cd {{ app_dir }} 
+exec 2>&1
+exec chpst -u {{ app_user }} -e /etc/runit/{{app_user}}/env java -jar jenkins.war --httpPort={{ http_port }} 

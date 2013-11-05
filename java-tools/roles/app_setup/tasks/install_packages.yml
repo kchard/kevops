@@ -1,0 +1,11 @@
+- name: update cache
+  remote_user: root
+  apt: update_cache=yes
+
+- name: install java
+  remote_user: root
+  apt: pkg=openjdk-7-jdk 
+
+- name: install runit 
+  remote_user: root
+  apt: pkg=runit

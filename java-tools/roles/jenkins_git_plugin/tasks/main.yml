@@ -1,0 +1,15 @@
+ - name: copy jenkins git plugin
+   remote_user: root
+   copy: src=scm-api.jpi dest={{ app_data }}/plugins/scm-api.jpi group={{ app_user }} owner={{ app_user }}
+
+ - name: copy jenkins git plugin
+   remote_user: root
+   copy: src=git-client.jpi dest={{ app_data }}/plugins/git-client.jpi group={{ app_user }} owner={{ app_user }}
+
+ - name: copy jenkins git plugin
+   remote_user: root
+   copy: src=git.jpi dest={{ app_data }}/plugins/git.jpi group={{ app_user }} owner={{ app_user }}
+
+ - name: restart jenkins
+   remote_user: root
+   command: sv restart {{ app_user }}

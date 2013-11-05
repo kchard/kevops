@@ -1,0 +1,17 @@
+---
+- name: install gitblit
+  hosts: gitblit 
+  remote_user: root
+  vars_files:
+    - gitblit_vars.yml
+  roles: 
+    - app_setup
+    - gitblit
+
+- name: setup gitblit hooks for jenkins
+  hosts: gitblit 
+  remote_user: root
+  vars_files:
+    - gitblit_vars.yml
+  roles: 
+    - gitblit_jenkins_hooks 

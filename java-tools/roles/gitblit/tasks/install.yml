@@ -1,0 +1,19 @@
+ - name: copy gitblit
+   remote_user: root
+   copy: src=gitblit.tar.gz dest={{ app_dir }} group={{ app_user }} owner={{ app_user }} 
+
+ - name: extract gitblit
+   remote_user: root
+   command: chdir={{ app_dir }} tar xzf gitblit.tar.gz 
+
+ - name: change owner to gitblit
+   remote_user: root
+   file: path={{ app_dir }} state=directory recurse=yes group={{ app_user }} owner={{ app_user }}
+
+ - name: set port for gitblit
+   remote_user: root
+   lineinfile: dest={{ app_data }}/gitblit.properties regexp="^server\.httpPort.*" line="server.httpPort = {{ http_port }}"
+
+ - name: set interface for gitblit
+   remote_user: root
+   lineinfile: dest={{ app_data }}/gitblit.properties regexp="^server\.httpBindInterface.*" line="server.httpBindInterface = "

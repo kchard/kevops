@@ -1,0 +1,12 @@
+ - name: "create group: {{ app_user }}"
+   remote_user: root
+   group: name={{ app_user }}
+
+ - name: "create user: {{ app_user }}"
+   remote_user: root
+   user: name={{ app_user }} group={{ app_user }} home=/home/{{ app_user }}
+
+ - name: "create install dir {{ app_dir }}"
+   remote_user: root
+   file: path={{ app_dir }} state=directory group={{ app_user }} owner={{ app_user }}
+

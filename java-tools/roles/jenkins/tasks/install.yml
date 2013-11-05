@@ -1,0 +1,4 @@
+ - name: copy jenkins 
+   remote_user: root
+   copy: src=jenkins.war dest={{ app_dir }} group={{ app_user }} owner={{ app_user }}
+

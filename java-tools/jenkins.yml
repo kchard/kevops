@@ -1,0 +1,31 @@
+---
+- name: install jenkins
+  hosts: jenkins 
+  remote_user: root
+  vars_files:
+    - jenkins_vars.yml
+  roles: 
+    - app_setup
+    - jenkins
+
+- name: wait for jenkins to initialize
+  hosts: jenkins
+  remote_user: root
+  vars_files:
+    - jenkins_vars.yml
+  tasks:
+    - name: wait for plugins dir to exist
+      remote_user: root
+      stat: path={{ app_data }}/plugins
+      register: result
+      until: result.stat.isdir is defined and result.stat.isdir == true
+      retries: 5
+      delay: 10
+
+- name: install jenkins git plugin
+  hosts: jenkins 
+  remote_user: root
+  vars_files:
+    - jenkins_vars.yml
+  roles: 
+    - jenkins_git_plugin

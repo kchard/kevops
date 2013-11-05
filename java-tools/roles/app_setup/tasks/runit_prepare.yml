@@ -1,0 +1,11 @@
+ - name: create runit staging dir
+   remote_user: root
+   file: path=/etc/runit/{{ app_user }} state=directory
+
+ - name: create runit staging log dir
+   remote_user: root
+   file: path=/etc/runit/{{ app_user }}/log state=directory
+
+ - name: create runit staging env dir
+   remote_user: root
+   file: path=/etc/runit/{{ app_user }}/env state=directory

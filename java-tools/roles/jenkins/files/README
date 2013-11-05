@@ -1,0 +1,4 @@
+Copy the Jenkins war to this directory 
+http://mirrors.jenkins-ci.org/war/latest/jenkins.war
+
+wget http://mirrors.jenkins-ci.org/war/latest/jenkins.war 

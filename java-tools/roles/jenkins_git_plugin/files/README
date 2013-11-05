@@ -1,0 +1,13 @@
+Copy the git related plugins to this directory 
+https://wiki.jenkins-ci.org/display/JENKINS/SCM+API+Plugin
+https://wiki.jenkins-ci.org/display/JENKINS/Git+Client+Plugin
+https://wiki.jenkins-ci.org/display/JENKINS/Git+Plugin
+
+wget https://updates.jenkins-ci.org/latest/scm-api.hpi
+mv scm-api.hpi scm-api.jpi
+
+wget https://updates.jenkins-ci.org/latest/git-client.hpi
+mv git-client.hpi git-client.jpi
+
+wget https://updates.jenkins-ci.org/latest/git.hpi
+mv git.hpi git.jpi

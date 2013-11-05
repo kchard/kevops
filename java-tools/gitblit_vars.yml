@@ -1,0 +1,7 @@
+---
+app_user: gitblit
+app_dir: /opt/gitblit
+app_data: /opt/gitblit/data
+app_logs: /opt/gitblit/logs
+http_port: 8080
+jenkins_url: "http://[host]:[port]"

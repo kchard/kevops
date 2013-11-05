@@ -1,0 +1,15 @@
+ - name: copy create-default-job script
+   remote_user: root
+   copy: src=create-default-job.groovy dest={{ app_data }}/groovy group={{ app_user }} owner={{ app_user }}
+
+ - name: configure post recevie hooks
+   remote_user: root
+   lineinfile: dest={{ app_data }}/gitblit.properties regexp="^groovy.postReceiveScripts.*" line="groovy.postReceiveScripts = create-default-job.groovy jenkins.groovy"
+
+ - name: configure jenkins url
+   remote_user: root
+   lineinfile: dest={{ app_data }}/gitblit.properties regexp="^groovy.jenkinsServer = {{ jenkins_url }}" line="groovy.jenkinsServer = {{ jenkins_url }}" insertafter=EOF 
+
+ - name: restart gitblit
+   remote_user: root
+   command: sv restart {{ app_user }}
